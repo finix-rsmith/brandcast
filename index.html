@@ -15,16 +15,15 @@
 		<div ng-include src="'familyMember'"></div>
 
 		<script type="text/ng-template" id="familyMember">
-			<div ng-repeat="member in familymembers">
+			<div ng-repeat="member in familymembers" style="padding: 5px 0;">
 				<ul>
 					<li ng-repeat="description in member.descriptions">
 						{{description.key}}: {{description.val}}
 					</li>
-					<ul>
-						<li>
-							<div ng-include src="'familyMember'" ng-init="familymembers = member.children"></div>
-						</li>
-					</ul>
+					<div ng-if="member.children">							
+						<p>Children:</p>
+						<div ng-include src="'familyMember'" ng-init="familymembers = member.children"></div>
+					</div>
 				</ul>
 			</div>
 		</script>
